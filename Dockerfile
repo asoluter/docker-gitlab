@@ -30,21 +30,21 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 RUN set -ex && \
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E1DD270288B4E6030699E45FA1715D88E1DF1F24 \
+    wget --quiet -O - 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA1715D88E1DF1F24' | gpg --dearmor -o /etc/apt/trusted.gpg.d/A1715D88E1DF1F24.gpg \
  && echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu focal main" >> /etc/apt/sources.list \
- && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 8B3981E7A6852F782CC4951600A6F0A3C300EE8C \
- && echo "deb http://ppa.launchpad.net/nginx/stable/ubuntu focal main" >> /etc/apt/sources.list \
- && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
+ && wget --quiet -O - 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xABF5BD827BD9BF62' | gpg --dearmor -o /etc/apt/trusted.gpg.d/ABF5BD827BD9BF62.gpg \
+ && echo "deb https://nginx.org/packages/ubuntu focal main" >> /etc/apt/sources.list \
+ && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg \
  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
- && wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
- && echo 'deb https://deb.nodesource.com/node_16.x focal main' > /etc/apt/sources.list.d/nodesource.list \
- && wget --quiet -O - https://dl.yarnpkg.com/debian/pubkey.gpg  | apt-key add - \
+ && wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/apt.nodesource.com.gpg \
+ && echo 'deb https://deb.nodesource.com/node_18.x focal main' > /etc/apt/sources.list.d/nodesource.list \
+ && wget --quiet -O - https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/apt.yarnpkg.com.gpg \
  && echo 'deb https://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list \
  && set -ex \
  && apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
       sudo supervisor logrotate locales curl \
-      nginx openssh-server postgresql-client-12 postgresql-contrib-12 redis-tools \
+      nginx openssh-server postgresql-client postgresql-contrib redis-tools \
       python3 python3-docutils nodejs yarn gettext-base graphicsmagick \
       libpq5 zlib1g libyaml-0-2 libssl1.1 \
       libgdbm6 libreadline8 libncurses5 libffi7 \
