@@ -31,7 +31,7 @@ RUN apt-get update \
 
 RUN set -ex && \
     wget --quiet -O - 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA1715D88E1DF1F24' | gpg --dearmor -o /etc/apt/trusted.gpg.d/A1715D88E1DF1F24.gpg \
- && echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu focal main" >> /etc/apt/sources.list \
+ && echo "deb https://ppa.launchpadcontent.net/git-core/ppa/ubuntu focal main" >> /etc/apt/sources.list \
  && wget --quiet -O - 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xABF5BD827BD9BF62' | gpg --dearmor -o /etc/apt/trusted.gpg.d/ABF5BD827BD9BF62.gpg \
  && echo "deb https://nginx.org/packages/ubuntu focal main" >> /etc/apt/sources.list \
  && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg \
