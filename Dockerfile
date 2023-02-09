@@ -34,11 +34,11 @@ RUN set -ex && \
  && echo "deb https://ppa.launchpadcontent.net/git-core/ppa/ubuntu focal main" >> /etc/apt/sources.list \
  && wget --quiet -O - 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xABF5BD827BD9BF62' | gpg --dearmor -o /etc/apt/trusted.gpg.d/ABF5BD827BD9BF62.gpg \
  && echo "deb https://nginx.org/packages/ubuntu focal main" >> /etc/apt/sources.list \
- && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg \
+ && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg \
  && echo 'deb https://apt.postgresql.org/pub/repos/apt/ focal-pgdg main' > /etc/apt/sources.list.d/pgdg.list \
- && wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/apt.nodesource.com.gpg \
+ && wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/nodesource.gpg \
  && echo 'deb https://deb.nodesource.com/node_16.x focal main' > /etc/apt/sources.list.d/nodesource.list \
- && wget --quiet -O - https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/apt.yarnpkg.com.gpg \
+ && wget --quiet -O - https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/yarnpkg.gpg \
  && echo 'deb https://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list \
  && set -ex \
  && apt-get update \
