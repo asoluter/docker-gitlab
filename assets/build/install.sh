@@ -193,7 +193,8 @@ exec_as_git cp ${GITLAB_INSTALL_DIR}/config/gitlab.yml.example ${GITLAB_INSTALL_
 # Temporary workaround, see <https://github.com/sameersbn/docker-gitlab/pull/2596>
 #
 # exec_as_git cp ${GITLAB_INSTALL_DIR}/config/database.yml.postgresql ${GITLAB_INSTALL_DIR}/config/database.yml
-exec_as_git cp ${GITLAB_BUILD_DIR}/config/database.yml.postgresql ${GITLAB_INSTALL_DIR}/config/database.yml
+cp ${GITLAB_BUILD_DIR}/config/database.yml.postgresql ${GITLAB_INSTALL_DIR}/config/database.yml
+chown ${GITLAB_USER}: ${GITLAB_INSTALL_DIR}/config/database.yml
 
 # Installs nodejs packages required to compile webpack
 exec_as_git yarn install --production --pure-lockfile
@@ -246,11 +247,16 @@ sed -i \
   -e "s|^[#]*LogLevel INFO|LogLevel VERBOSE|" \
   -e "s|^[#]*AuthorizedKeysFile.*|AuthorizedKeysFile %h/.ssh/authorized_keys %h/.ssh/authorized_keys_proxy|" \
   /etc/ssh/sshd_config
+echo "AcceptEnv GIT_PROTOCOL" >> /etc/ssh/sshd_config # Allow clients to explicitly set the Git transfer protocol, e.g. to enable version 2.
 echo "UseDNS no" >> /etc/ssh/sshd_config
 
 # move supervisord.log file to ${GITLAB_LOG_DIR}/supervisor/
 sed -i "s|^[#]*logfile=.*|logfile=${GITLAB_LOG_DIR}/supervisor/supervisord.log ;|" /etc/supervisor/supervisord.conf
 
+# silence "CRIT Server 'unix_http_server' running without any HTTP authentication checking" message
+# https://github.com/Supervisor/supervisor/issues/717
+sed -i '/\.sock/a password=dummy' /etc/supervisor/supervisord.conf
+sed -i '/\.sock/a username=dummy' /etc/supervisor/supervisord.conf
 # prevent confusing warning "CRIT Supervisor running as root" by clarify run as root
 #   user not defined in supervisord.conf by default, so just append it after [supervisord] block
 sed -i "/\[supervisord\]/a user=root" /etc/supervisor/supervisord.conf
