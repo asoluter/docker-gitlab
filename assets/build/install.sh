@@ -146,9 +146,7 @@ git clone -q -b v${GITALY_SERVER_VERSION} --depth 1 ${GITLAB_GITALY_URL} ${GITLA
 # install gitaly
 make -C ${GITLAB_GITALY_BUILD_DIR} install
 mkdir -p ${GITLAB_GITALY_INSTALL_DIR}
-cp -a ${GITLAB_GITALY_BUILD_DIR}/ruby ${GITLAB_GITALY_INSTALL_DIR}/
 cp -a ${GITLAB_GITALY_BUILD_DIR}/config.toml.example ${GITLAB_GITALY_INSTALL_DIR}/config.toml
-rm -rf ${GITLAB_GITALY_INSTALL_DIR}/ruby/vendor/bundle/ruby/**/cache
 chown -R ${GITLAB_USER}: ${GITLAB_GITALY_INSTALL_DIR}
 
 # install git bundled with gitaly.
