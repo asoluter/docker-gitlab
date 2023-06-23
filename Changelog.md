@@ -2,6 +2,77 @@
 
 This file only reflects the changes that are made in this image. Please refer to the upstream GitLab [CHANGELOG](https://gitlab.com/gitlab-org/gitlab-foss/blob/master/CHANGELOG.md) for the list of changes in GitLab.
 
+**16.0.5**
+
+- gitlab: upgrade CE to v16.0.45
+- gitaly: upgrade to v16.0.5
+- gitlab-pages: upgrade to v16.0.5
+- ubuntu: upgrade to focal-20230605
+
+**16.0.4**
+
+- gitlab: upgrade CE to v16.0.4
+- gitaly: upgrade to v16.0.4
+- gitlab-pages: upgrade to v16.0.4
+
+**16.0.3**
+
+- gitlab: upgrade CE to v16.0.3
+- gitaly: upgrade to v16.0.3
+- gitlab-pages: upgrade to v16.0.3
+
+**16.0.2**
+
+- gitlab: upgrade CE to v16.0.2
+- gitaly: upgrade to v16.0.2
+- gitlab-pages: upgrade to v16.0.2
+- golang: upgrade to v1.20.5
+
+**16.0.1**
+
+- gitlab: upgrade CE to v16.0.1
+- gitaly: upgrade to v16.0.1
+- gitlab-pages: upgrade to v16.0.1
+
+**16.0.0**
+
+- gitlab: upgrade CE to v16.0.0
+- gitaly: upgrade to v16.0.0
+- gitlab-pages: upgrade to v16.0.0
+- gitlab-shell: upgrade to v14.20.0
+
+**15.11.5**
+
+- gitlab: upgrade CE to v15.11.5
+- gitaly: upgrade to v15.11.5
+- gitlab-pages: upgrade to v15.11.5
+
+**15.11.4**
+
+- gitlab: upgrade CE to v15.11.4
+- gitaly: upgrade to v15.11.4
+- gitlab-pages: upgrade to v15.11.4
+
+**15.11.3**
+
+- gitlab: upgrade CE to v15.11.3
+- gitaly: upgrade to v15.11.3
+- gitlab-pages: upgrade to v15.11.3
+- ruby: upgrade to v3.0.6
+
+**15.11.2**
+
+- gitlab: upgrade CE to v15.11.2
+- gitaly: upgrade to v15.11.2
+- gitlab-pages: upgrade to v15.11.2
+
+**15.11.1**
+
+- gitlab: upgrade CE to v15.11.1
+- gitaly: upgrade to v15.11.1
+- gitlab-pages: upgrade to v15.11.1
+- golang: upgrade to v1.20.4
+
 **15.11.0**
 
 - gitlab: upgrade CE to v15.11.0
