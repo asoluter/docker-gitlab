@@ -200,7 +200,7 @@ gitlab_install_corresponding_database_client() {
     DB_CLIENT_VERSION_PACKAGE_NAME=${DB_SERVER_VERSION_MAJOR}
   else
     # prior to v10: convert
-    # FIXME: rought implementation
+    # FIXME: rough implementation
     # It exploits the fact that there is no version such as 9.10, and it lacks versatility.
     # divide by 100, then replace first 0 to comma
     DB_CLIENT_VERSION_PACKAGE_NAME=$((DB_SERVER_VERSION/100))
